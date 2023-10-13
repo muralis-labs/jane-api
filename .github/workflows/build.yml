@@ -1,11 +1,44 @@
-on: [ push ]
+name: Quarkus Native Build
+
+on:
+  push:
+    branches:
+      - main # ou mude para o nome da sua branch principal
 
 jobs:
   native_build:
+    name: Build Quarkus Native and Docker Image
     runs-on: ubuntu-latest
-    name: Build native Quarkus app
+
     steps:
-      - name: Checkout the code
-        uses: actions/checkout@main
-      - name: Build native executable and upload it as an artifact
-        uses: maxday/quarkus-native-build-docker-action@1
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Install Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+          sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+          sudo apt-get update
+          sudo apt-get install -y docker-ce
+
+      - name: Build Quarkus Native
+        run: |
+          ./mvnw package -Pnative -Dquarkus.native.container-build=true -Dquarkus.native.container-runtime=docker
+
+#      - name: Build Docker Image
+#        run: |
+#          docker build -t my-quarkus-app:latest .
+#
+#      - name: Archive artifact
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: quarkus-app
+#          path: target/*-runner

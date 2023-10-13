@@ -1,13 +1,16 @@
-name: Quarkus Native Build
+name: Quarkus Native Build and Fly.io Deploy
 
 on:
   push:
     branches:
-      - main # ou mude para o nome da sua branch principal
+      - main
+
+env:
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
 jobs:
-  native_build:
-    name: Build Quarkus Native and Docker Image
+  build_and_deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -36,6 +39,10 @@ jobs:
       - name: Setup Fly CLI
         uses: superfly/flyctl-actions/setup-flyctl@master
 
+      - name: Authenticate with Fly.io
+        run: |
+          flyctl auth token --set ${{ env.FLY_API_TOKEN }}
+
       - name: Deploy to Fly.io
         run: |
-          flyctl deploy --local-only --dockerfile Dockerfile --app jane-api --env FLY_API_TOKEN=${{ secrets.FLY_API_TOKEN }}
+          flyctl deploy --local-only --dockerfile Dockerfile --app jane-api

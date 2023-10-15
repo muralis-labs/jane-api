@@ -41,7 +41,7 @@ jobs:
 
       - name: Authenticate with Fly.io
         run: |
-          flyctl auth token --set ${{ env.FLY_API_TOKEN }}
+          flyctl auth token --access-token ${{ env.FLY_API_TOKEN }}
 
       - name: Deploy to Fly.io
         run: |

@@ -1,4 +1,4 @@
-package br.com.muralis;
+package br.com.muralis.inbound.configuration;
 
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;

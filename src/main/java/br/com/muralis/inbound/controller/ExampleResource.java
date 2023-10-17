@@ -1,4 +1,4 @@
-package br.com.muralis;
+package br.com.muralis.inbound.controller;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;

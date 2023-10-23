@@ -25,7 +25,7 @@ public class CadastrarColaborador {
         if (colaboradorRepository.existsByEmail(command.getEmail()))
             throw new ColaboradorCadastradoComEmail(command.getEmail());
         Colaborador colaborador = colaboradorMapper.from(command);
-        colaborador.prepararParaSalvar();
+        colaborador.cadastrar();
         Log.info("Colaborador preparado para salvar: " + colaborador.getEmail());
         Colaborador colaboradorSalvo = colaboradorRepository.save(colaborador);
         Log.info("Colaborador salvo: " + colaboradorSalvo.getEmail());

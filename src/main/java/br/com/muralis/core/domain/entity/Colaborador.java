@@ -18,7 +18,7 @@ public class Colaborador {
     @Setter
     private String email;
 
-    public void prepararParaSalvar() {
+    public void cadastrar() {
         this.id = UUID.randomUUID().toString();
     }
 

@@ -7,6 +7,7 @@ import br.com.muralis.outbound.hibernate.table.PanacheColaborador;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
+import java.util.List;
 import java.util.Optional;
 
 @ApplicationScoped
@@ -39,6 +40,16 @@ public class ColaboradorPanacheRepository implements ColaboradorRepository {
     @Override
     public boolean deleteById(String id) {
         return PanacheColaborador.deleteById(id);
+    }
+
+    @Override
+    public List<Colaborador> findAll(int page, int size) {
+        return panacheColaboradorMapper.from(PanacheColaborador.findAll().page(page, size).list());
+    }
+
+    @Override
+    public long count() {
+        return PanacheColaborador.count();
     }
 
 }

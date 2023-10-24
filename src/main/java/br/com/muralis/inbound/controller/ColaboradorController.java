@@ -4,6 +4,7 @@ import br.com.muralis.core.dto.CadastrarColaboradorCommand;
 import br.com.muralis.core.usecase.BuscarColaborador;
 import br.com.muralis.core.usecase.CadastrarColaborador;
 import br.com.muralis.core.usecase.ExcluirColaborador;
+import br.com.muralis.core.usecase.ListarColaboradores;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -22,6 +23,9 @@ public class ColaboradorController {
 
     @Inject
     ExcluirColaborador excluirColaborador;
+
+    @Inject
+    ListarColaboradores listarColaboradores;
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -52,6 +56,21 @@ public class ColaboradorController {
         excluirColaborador.execute(id);
         return Response
                 .ok()
+                .build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response listar(@QueryParam("page") Integer page, @QueryParam("size") Integer size) {
+        if (page == null) {
+            page = 0;
+        }
+        if (size == null) {
+            size = 10;
+        }
+        var colaboradores = listarColaboradores.execute(page, size);
+        return Response
+                .ok(colaboradores)
                 .build();
     }
 

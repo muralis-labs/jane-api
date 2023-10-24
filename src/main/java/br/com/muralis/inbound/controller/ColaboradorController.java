@@ -10,7 +10,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriBuilder;
 
-@Path("/v1/colaborador")
+@Path("/v1/colaboradores")
 public class ColaboradorController {
 
     @Inject

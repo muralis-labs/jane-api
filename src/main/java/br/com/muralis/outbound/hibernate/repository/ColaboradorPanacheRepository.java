@@ -36,4 +36,9 @@ public class ColaboradorPanacheRepository implements ColaboradorRepository {
         return PanacheColaborador.count("email", email) > 0;
     }
 
+    @Override
+    public boolean deleteById(String id) {
+        return PanacheColaborador.deleteById(id);
+    }
+
 }

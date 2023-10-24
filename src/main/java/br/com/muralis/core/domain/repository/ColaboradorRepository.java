@@ -12,4 +12,6 @@ public interface ColaboradorRepository {
 
     boolean existsByEmail(String email);
 
+    boolean deleteById(String id);
+
 }

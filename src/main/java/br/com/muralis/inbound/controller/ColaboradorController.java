@@ -3,6 +3,7 @@ package br.com.muralis.inbound.controller;
 import br.com.muralis.core.dto.CadastrarColaboradorCommand;
 import br.com.muralis.core.usecase.BuscarColaborador;
 import br.com.muralis.core.usecase.CadastrarColaborador;
+import br.com.muralis.core.usecase.ExcluirColaborador;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -19,8 +20,12 @@ public class ColaboradorController {
     @Inject
     BuscarColaborador buscarColaborador;
 
+    @Inject
+    ExcluirColaborador excluirColaborador;
+
     @POST
     @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response cadastrar(@Valid CadastrarColaboradorCommand command) {
         var colaborador = cadastrarColaborador.execute(command);
         return Response
@@ -37,6 +42,16 @@ public class ColaboradorController {
         var colaborador = buscarColaborador.execute(id);
         return Response
                 .ok(colaborador)
+                .build();
+    }
+
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{id}")
+    public Response excluir(@PathParam("id") String id) {
+        excluirColaborador.execute(id);
+        return Response
+                .ok()
                 .build();
     }
 

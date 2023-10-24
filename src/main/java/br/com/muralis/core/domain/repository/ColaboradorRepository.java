@@ -19,4 +19,6 @@ public interface ColaboradorRepository {
 
     long count();
 
+    Colaborador update(Colaborador colaboradorParaAtualizar);
+
 }

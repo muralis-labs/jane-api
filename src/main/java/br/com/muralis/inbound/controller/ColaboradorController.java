@@ -1,10 +1,8 @@
 package br.com.muralis.inbound.controller;
 
+import br.com.muralis.core.dto.AtualizarColaboradorCommand;
 import br.com.muralis.core.dto.CadastrarColaboradorCommand;
-import br.com.muralis.core.usecase.BuscarColaborador;
-import br.com.muralis.core.usecase.CadastrarColaborador;
-import br.com.muralis.core.usecase.ExcluirColaborador;
-import br.com.muralis.core.usecase.ListarColaboradores;
+import br.com.muralis.core.usecase.*;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -17,6 +15,9 @@ public class ColaboradorController {
 
     @Inject
     CadastrarColaborador cadastrarColaborador;
+
+    @Inject
+    AtualizarColaborador atualizarColaborador;
 
     @Inject
     BuscarColaborador buscarColaborador;
@@ -34,6 +35,19 @@ public class ColaboradorController {
         var colaborador = cadastrarColaborador.execute(command);
         return Response
                 .status(Response.Status.CREATED)
+                .entity(colaborador)
+                .location(UriBuilder.fromResource(ColaboradorController.class).path(colaborador.getId()).build())
+                .build();
+    }
+
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/{id}")
+    public Response atualizar(@Valid AtualizarColaboradorCommand command, @PathParam("id") String id) {
+        var colaborador = atualizarColaborador.execute(id, command);
+        return Response
+                .status(Response.Status.OK)
                 .entity(colaborador)
                 .location(UriBuilder.fromResource(ColaboradorController.class).path(colaborador.getId()).build())
                 .build();

@@ -6,6 +6,7 @@ import br.com.muralis.outbound.hibernate.mapper.PanacheColaboradorMapper;
 import br.com.muralis.outbound.hibernate.table.PanacheColaborador;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -50,6 +51,14 @@ public class ColaboradorPanacheRepository implements ColaboradorRepository {
     @Override
     public long count() {
         return PanacheColaborador.count();
+    }
+
+    @Override
+    @Transactional
+    public Colaborador update(Colaborador colaboradorParaAtualizar) {
+        PanacheColaborador panacheColaborador = PanacheColaborador.findById(colaboradorParaAtualizar.getId());
+        panacheColaboradorMapper.update(panacheColaborador, colaboradorParaAtualizar);
+        return panacheColaboradorMapper.from(panacheColaborador);
     }
 
 }

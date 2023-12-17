@@ -1,8 +1,8 @@
 package br.com.muralis.inbound.controller;
 
-import br.com.muralis.core.dto.colaborador.AtualizarColaboradorCommand;
-import br.com.muralis.core.dto.colaborador.CadastrarColaboradorCommand;
-import br.com.muralis.core.usecase.colaborador.*;
+import br.com.muralis.core.dto.empresa.AtualizarEmpresaCommand;
+import br.com.muralis.core.dto.empresa.CadastrarEmpresaCommand;
+import br.com.muralis.core.usecase.empresa.*;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -10,33 +10,32 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriBuilder;
 
-@Path("/v1/colaboradores")
-public class ColaboradorController {
+@Path("/v1/empresas")
+public class EmpresaController {
+    @Inject
+    CadastrarEmpresa cadastrarEmpresa;
 
     @Inject
-    CadastrarColaborador cadastrarColaborador;
+    AtualizarEmpresa atualizarEmpresa;
 
     @Inject
-    AtualizarColaborador atualizarColaborador;
+    BuscarEmpresa buscarEmpresa;
 
     @Inject
-    BuscarColaborador buscarColaborador;
+    ExcluirEmpresa excluirEmpresa;
 
     @Inject
-    ExcluirColaborador excluirColaborador;
-
-    @Inject
-    ListarColaboradores listarColaboradores;
+    ListarEmpresas listarEmpresas;
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response cadastrar(@Valid CadastrarColaboradorCommand command) {
-        var colaborador = cadastrarColaborador.execute(command);
+    public Response cadastrar(@Valid CadastrarEmpresaCommand command) {
+        var empresa = cadastrarEmpresa.execute(command);
         return Response
                 .status(Response.Status.CREATED)
-                .entity(colaborador)
-                .location(UriBuilder.fromResource(ColaboradorController.class).path(colaborador.getId()).build())
+                .entity(empresa)
+                .location(UriBuilder.fromResource(EmpresaController.class).path(empresa.getId()).build())
                 .build();
     }
 
@@ -44,12 +43,12 @@ public class ColaboradorController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/{id}")
-    public Response atualizar(@Valid AtualizarColaboradorCommand command, @PathParam("id") String id) {
-        var colaborador = atualizarColaborador.execute(id, command);
+    public Response atualizar(@Valid AtualizarEmpresaCommand command, @PathParam("id") String id) {
+        var empresa = atualizarEmpresa.execute(id, command);
         return Response
                 .status(Response.Status.OK)
-                .entity(colaborador)
-                .location(UriBuilder.fromResource(ColaboradorController.class).path(colaborador.getId()).build())
+                .entity(empresa)
+                .location(UriBuilder.fromResource(EmpresaController.class).path(empresa.getId()).build())
                 .build();
     }
 
@@ -57,9 +56,9 @@ public class ColaboradorController {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
     public Response buscar(@PathParam("id") String id) {
-        var colaborador = buscarColaborador.execute(id);
+        var empresa = buscarEmpresa.execute(id);
         return Response
-                .ok(colaborador)
+                .ok(empresa)
                 .build();
     }
 
@@ -67,7 +66,7 @@ public class ColaboradorController {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
     public Response excluir(@PathParam("id") String id) {
-        excluirColaborador.execute(id);
+        excluirEmpresa.execute(id);
         return Response
                 .ok()
                 .build();
@@ -82,10 +81,9 @@ public class ColaboradorController {
         if (size == null) {
             size = 10;
         }
-        var colaboradores = listarColaboradores.execute(page, size);
+        var empresas = listarEmpresas.execute(page, size);
         return Response
-                .ok(colaboradores)
+                .ok(empresas)
                 .build();
     }
-
 }

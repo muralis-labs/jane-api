@@ -1,6 +1,6 @@
-package br.com.muralis.core.usecase;
+package br.com.muralis.core.usecase.colaborador;
 
-import br.com.muralis.core.domain.exception.ColaboradorNaoEncontradoException;
+import br.com.muralis.core.domain.exception.colaborador.ColaboradorNaoEncontradoException;
 import br.com.muralis.core.domain.repository.ColaboradorRepository;
 import io.quarkus.logging.Log;
 import jakarta.enterprise.context.ApplicationScoped;

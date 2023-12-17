@@ -1,4 +1,4 @@
-package br.com.muralis.core.usecase;
+package br.com.muralis.core.usecase.colaborador;
 
 import br.com.muralis.core.domain.entity.Colaborador;
 import br.com.muralis.core.domain.repository.ColaboradorRepository;

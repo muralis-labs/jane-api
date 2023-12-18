@@ -9,7 +9,8 @@ import jakarta.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "colaborador", indexes = { @Index(name = "idx_colaborador_email", columnList = "email", unique = true) })
+@Table(name = "colaborador", indexes = { @Index(name = "idx_colaborador_email", columnList = "email", unique = true),
+		@Index(name = "idx_colaborador_cpf", columnList = "cpf", unique = true) })
 public class PanacheColaborador extends PanacheEntityBase {
 
 	@Id

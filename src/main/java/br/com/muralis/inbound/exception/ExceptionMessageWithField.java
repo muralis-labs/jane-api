@@ -1,8 +1,10 @@
 package br.com.muralis.inbound.exception;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.Getter;
 
 @Getter
+@RegisterForReflection
 public class ExceptionMessageWithField {
 
 	private final String mensagem;

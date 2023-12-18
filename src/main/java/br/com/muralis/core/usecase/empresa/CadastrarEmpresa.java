@@ -12,22 +12,24 @@ import jakarta.transaction.Transactional;
 
 @ApplicationScoped
 public class CadastrarEmpresa {
-    @Inject
-    EmpresaRepository empresaRepository;
 
-    @Inject
-    EmpresaMapper empresaMapper;
+	@Inject
+	EmpresaRepository empresaRepository;
 
-    @Transactional
-    public Empresa execute(CadastrarEmpresaCommand command) {
-        Log.info("Preparando para cadastrar empresa: " + command.getCNPJ());
-        if (empresaRepository.existsByCNPJ(command.getCNPJ()))
-            throw new EmpresaCadastradaComCNPJ(command.getCNPJ());
-        Empresa empresa = empresaMapper.from(command);
-        empresa.cadastrar();
-        Log.info("Empresa preparada para salvar: " + empresa.getEmail());
-        Empresa empresaSalva = empresaRepository.save(empresa);
-        Log.info("Empresa salva: " + empresaSalva.getEmail());
-        return empresaSalva;
-    }
+	@Inject
+	EmpresaMapper empresaMapper;
+
+	@Transactional
+	public Empresa execute(CadastrarEmpresaCommand command) {
+		Log.info("Preparando para cadastrar empresa: " + command.getCnpj());
+		if (empresaRepository.existsByCNPJ(command.getCnpj()))
+			throw new EmpresaCadastradaComCNPJ(command.getCnpj());
+		Empresa empresa = empresaMapper.from(command);
+		empresa.cadastrar();
+		Log.info("Empresa preparada para salvar: " + empresa.getEmail());
+		Empresa empresaSalva = empresaRepository.save(empresa);
+		Log.info("Empresa salva: " + empresaSalva.getEmail());
+		return empresaSalva;
+	}
+
 }

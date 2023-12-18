@@ -9,9 +9,13 @@ import java.util.List;
 
 @Mapper(componentModel = "cdi")
 public interface PanacheEmpresaMapper {
-    Empresa from(PanacheEmpresa empresa);
-    PanacheEmpresa from(Empresa empresa);
-    List<Empresa> from(List<PanacheEmpresa> list);
-    PanacheEmpresa update(@MappingTarget PanacheEmpresa panacheEmpresa, Empresa empresaParaAtualizar);
+
+	Empresa from(PanacheEmpresa empresa);
+
+	PanacheEmpresa from(Empresa empresa);
+
+	List<Empresa> from(List<PanacheEmpresa> list);
+
+	PanacheEmpresa update(@MappingTarget PanacheEmpresa panacheEmpresa, Empresa empresaParaAtualizar);
 
 }

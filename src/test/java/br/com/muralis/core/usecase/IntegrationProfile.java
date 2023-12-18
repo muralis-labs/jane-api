@@ -6,9 +6,9 @@ import java.util.Map;
 
 public class IntegrationProfile implements QuarkusTestProfile {
 
-    @Override
-    public Map<String, String> getConfigOverrides() {
-        return Map.of("quarkus.devservices.enabled", "true");
-    }
+	@Override
+	public Map<String, String> getConfigOverrides() {
+		return Map.of("quarkus.devservices.enabled", "true");
+	}
 
 }

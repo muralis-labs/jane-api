@@ -10,61 +10,62 @@ import java.util.UUID;
 @Getter
 @Builder
 public class Empresa {
-    private String id;
 
-    @Setter
-    private String email;
+	private String id;
 
-    @Setter
-    private String razaoSocial;
+	@Setter
+	private String email;
 
-    @Setter
-    private String CNPJ;
+	@Setter
+	private String razaoSocial;
 
-    @Setter
-    private LocalDate dataContrato;
+	@Setter
+	private String cnpj;
 
-    @Setter
-    private String regimeTributario;
+	@Setter
+	private LocalDate dataContrato;
 
-    @Setter
-    private String objetoContratual;
+	@Setter
+	private String regimeTributario;
 
-    @Setter
-    private String mensalidadeContrato;
+	@Setter
+	private String objetoContratual;
 
-    @Setter
-    private String inscricaoMunicipal;
+	@Setter
+	private String mensalidadeContrato;
 
-    @Setter
-    private String inscricaoEstadual;
+	@Setter
+	private String inscricaoMunicipal;
 
-    @Setter
-    private String CEP;
+	@Setter
+	private String inscricaoEstadual;
 
-    @Setter
-    private String estado;
+	@Setter
+	private String cep;
 
-    @Setter
-    private String cidade;
+	@Setter
+	private String estado;
 
-    @Setter
-    private String bairro;
+	@Setter
+	private String cidade;
 
-    @Setter
-    private String endereco;
+	@Setter
+	private String bairro;
 
-    @Setter
-    private Integer numero;
+	@Setter
+	private String endereco;
 
-    @Setter
-    private String complemento;
+	@Setter
+	private Integer numero;
 
-    @Setter
-    private String telefone;
+	@Setter
+	private String complemento;
 
-    public void cadastrar() {
-        this.id = UUID.randomUUID().toString();
-    }
+	@Setter
+	private String telefone;
+
+	public void cadastrar() {
+		this.id = UUID.randomUUID().toString();
+	}
 
 }

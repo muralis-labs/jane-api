@@ -9,14 +9,15 @@ import jakarta.inject.Inject;
 
 @ApplicationScoped
 public class BuscarEmpresa {
-    @Inject
-    EmpresaRepository empresaRepository;
 
-    public Empresa execute(String id) {
-        Log.info("Buscando empresa com id " + id);
-        Empresa empresa = empresaRepository.findById(id)
-                .orElseThrow(() -> new EmpresaNaoEncontrada(id));
-        Log.info("Empresa encontrada: " + empresa.getEmail());
-        return empresa;
-    }
+	@Inject
+	EmpresaRepository empresaRepository;
+
+	public Empresa execute(String id) {
+		Log.info("Buscando empresa com id " + id);
+		Empresa empresa = empresaRepository.findById(id).orElseThrow(() -> new EmpresaNaoEncontrada(id));
+		Log.info("Empresa encontrada: " + empresa.getEmail());
+		return empresa;
+	}
+
 }

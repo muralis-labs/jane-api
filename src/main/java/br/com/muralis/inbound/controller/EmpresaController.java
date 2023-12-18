@@ -12,78 +12,72 @@ import jakarta.ws.rs.core.UriBuilder;
 
 @Path("/v1/empresas")
 public class EmpresaController {
-    @Inject
-    CadastrarEmpresa cadastrarEmpresa;
 
-    @Inject
-    AtualizarEmpresa atualizarEmpresa;
+	@Inject
+	CadastrarEmpresa cadastrarEmpresa;
 
-    @Inject
-    BuscarEmpresa buscarEmpresa;
+	@Inject
+	AtualizarEmpresa atualizarEmpresa;
 
-    @Inject
-    ExcluirEmpresa excluirEmpresa;
+	@Inject
+	BuscarEmpresa buscarEmpresa;
 
-    @Inject
-    ListarEmpresas listarEmpresas;
+	@Inject
+	ExcluirEmpresa excluirEmpresa;
 
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response cadastrar(@Valid CadastrarEmpresaCommand command) {
-        var empresa = cadastrarEmpresa.execute(command);
-        return Response
-                .status(Response.Status.CREATED)
-                .entity(empresa)
-                .location(UriBuilder.fromResource(EmpresaController.class).path(empresa.getId()).build())
-                .build();
-    }
+	@Inject
+	ListarEmpresas listarEmpresas;
 
-    @PUT
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/{id}")
-    public Response atualizar(@Valid AtualizarEmpresaCommand command, @PathParam("id") String id) {
-        var empresa = atualizarEmpresa.execute(id, command);
-        return Response
-                .status(Response.Status.OK)
-                .entity(empresa)
-                .location(UriBuilder.fromResource(EmpresaController.class).path(empresa.getId()).build())
-                .build();
-    }
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response cadastrar(@Valid CadastrarEmpresaCommand command) {
+		var empresa = cadastrarEmpresa.execute(command);
+		return Response.status(Response.Status.CREATED)
+			.entity(empresa)
+			.location(UriBuilder.fromResource(EmpresaController.class).path(empresa.getId()).build())
+			.build();
+	}
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{id}")
-    public Response buscar(@PathParam("id") String id) {
-        var empresa = buscarEmpresa.execute(id);
-        return Response
-                .ok(empresa)
-                .build();
-    }
+	@PUT
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/{id}")
+	public Response atualizar(@Valid AtualizarEmpresaCommand command, @PathParam("id") String id) {
+		var empresa = atualizarEmpresa.execute(id, command);
+		return Response.status(Response.Status.OK)
+			.entity(empresa)
+			.location(UriBuilder.fromResource(EmpresaController.class).path(empresa.getId()).build())
+			.build();
+	}
 
-    @DELETE
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{id}")
-    public Response excluir(@PathParam("id") String id) {
-        excluirEmpresa.execute(id);
-        return Response
-                .ok()
-                .build();
-    }
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/{id}")
+	public Response buscar(@PathParam("id") String id) {
+		var empresa = buscarEmpresa.execute(id);
+		return Response.ok(empresa).build();
+	}
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response listar(@QueryParam("page") Integer page, @QueryParam("size") Integer size) {
-        if (page == null) {
-            page = 0;
-        }
-        if (size == null) {
-            size = 10;
-        }
-        var empresas = listarEmpresas.execute(page, size);
-        return Response
-                .ok(empresas)
-                .build();
-    }
+	@DELETE
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/{id}")
+	public Response excluir(@PathParam("id") String id) {
+		excluirEmpresa.execute(id);
+		return Response.ok().build();
+	}
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response listar(@QueryParam("page") Integer page, @QueryParam("size") Integer size) {
+		if (page == null) {
+			page = 0;
+		}
+		if (size == null) {
+			size = 10;
+		}
+		var empresas = listarEmpresas.execute(page, size);
+		return Response.ok(empresas).build();
+	}
+
 }

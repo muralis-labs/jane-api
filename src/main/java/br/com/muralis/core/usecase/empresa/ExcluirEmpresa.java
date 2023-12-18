@@ -9,14 +9,16 @@ import jakarta.transaction.Transactional;
 
 @ApplicationScoped
 public class ExcluirEmpresa {
-    @Inject
-    EmpresaRepository empresaRepository;
 
-    @Transactional
-    public void execute(String id) {
-        Log.info("Preparando para excluir empresa: " + id);
-        if (!empresaRepository.deleteById(id))
-            throw new EmpresaNaoEncontrada(id);
-        Log.info("Empresa excluída: " + id);
-    }
+	@Inject
+	EmpresaRepository empresaRepository;
+
+	@Transactional
+	public void execute(String id) {
+		Log.info("Preparando para excluir empresa: " + id);
+		if (!empresaRepository.deleteById(id))
+			throw new EmpresaNaoEncontrada(id);
+		Log.info("Empresa excluída: " + id);
+	}
+
 }

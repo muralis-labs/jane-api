@@ -3,6 +3,7 @@ package br.com.muralis.core.dto.colaborador.juridico;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -46,8 +47,10 @@ public class AtualizarColaboradorJuridicoCommand {
 	public String nomeMae;
 
 	@NotBlank(message = "Telefone celular é obrigatório")
+	@Pattern(regexp = "\\([0-9]{2}\\) [0-9]{4,5}-[0-9]{4}", message = "Telefone celular inválido. Ex (11) 99999-9999")
 	public String telefoneCelular;
 
+	@Pattern(regexp = "\\([0-9]{2}\\) [0-9]{4,5}-[0-9]{4}", message = "Telefone celular inválido. Ex (11) 99999-9999")
 	public String telefoneResidencial;
 
 	public String nomePai;

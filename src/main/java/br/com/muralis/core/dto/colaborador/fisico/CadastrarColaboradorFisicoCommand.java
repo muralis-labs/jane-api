@@ -26,49 +26,49 @@ public class CadastrarColaboradorFisicoCommand {
 	private String email;
 
 	@NotBlank(message = "Sexo é obrigatório")
-	public String sexo;
+	private String sexo;
 
 	@NotNull(message = "Nascimento é obrigatório")
-	public LocalDate nascimento;
+	private LocalDate nascimento;
 
 	@NotBlank(message = "Estado cívil é obrigatório")
-	public String estadoCivil;
+	private String estadoCivil;
 
 	@NotBlank(message = "País de nascimento é obrigatório")
-	public String paisNascimento;
+	private String paisNascimento;
 
 	@NotBlank(message = "Estado de nascimento é obrigatório")
-	public String estadoNascimento;
+	private String estadoNascimento;
 
 	@NotBlank(message = "Cidade de nascimento é obrigatório")
-	public String cidadeNascimento;
+	private String cidadeNascimento;
 
 	@NotBlank(message = "Nome da mãe é obrigatório")
-	public String nomeMae;
+	private String nomeMae;
 
 	@NotBlank(message = "Telefone celular é obrigatório")
 	@Pattern(regexp = "\\([0-9]{2}\\) [0-9]{4,5}-[0-9]{4}", message = "Telefone celular inválido. Ex (11) 99999-9999")
-	public String telefoneCelular;
+	private String telefoneCelular;
 
 	@Pattern(regexp = "\\([0-9]{2}\\) [0-9]{4,5}-[0-9]{4}", message = "Telefone celular inválido. Ex (11) 99999-9999")
-	public String telefoneResidencial;
+	private String telefoneResidencial;
 
-	public String nomePai;
+	private String nomePai;
 
 	@NotBlank(message = "RG é obrigatório")
-	public String rg;
+	private String rg;
 
 	@NotBlank(message = "Órgão expedidor é obrigatório")
-	public String orgaoExpedidor;
+	private String orgaoExpedidor;
 
 	@NotNull(message = "Órgão expedidor é obrigatório")
-	public LocalDate dataExpedicao;
+	private LocalDate dataExpedicao;
 
 	@NotBlank(message = "CPF é obrigatório")
 	@CPF(message = "CPF inválido")
-	public String cpf;
+	private String cpf;
 
 	@NotBlank(message = "Grau de instrução é obrigatório")
-	public String grauInstrucao;
+	private String grauInstrucao;
 
 }

@@ -11,11 +11,11 @@ import jakarta.inject.Inject;
 public class BuscarColaborador {
 
 	@Inject
-	ColaboradorRepository colaboradorFisicoRepository;
+	ColaboradorRepository colaboradorRepository;
 
 	public Colaborador execute(String id) {
 		Log.info("Buscando colaborador com id " + id);
-		Colaborador colaborador = colaboradorFisicoRepository.findById(id)
+		Colaborador colaborador = colaboradorRepository.findById(id)
 			.orElseThrow(() -> new ColaboradorNaoEncontradoException(id));
 		Log.info("Colaborador encontrado: " + colaborador.getEmail());
 		return colaborador;

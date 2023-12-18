@@ -1,10 +1,12 @@
 package br.com.muralis.core.dto;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.Getter;
 
 import java.util.List;
 
 @Getter
+@RegisterForReflection
 public class CustomPage<T> {
 
 	private final List<T> content;

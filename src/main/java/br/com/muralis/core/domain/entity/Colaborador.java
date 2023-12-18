@@ -1,5 +1,6 @@
 package br.com.muralis.core.domain.entity;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -10,6 +11,7 @@ import java.util.UUID;
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
+@RegisterForReflection
 public class Colaborador {
 
 	private String id;

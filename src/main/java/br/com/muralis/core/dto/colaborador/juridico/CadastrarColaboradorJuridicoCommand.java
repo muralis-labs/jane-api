@@ -27,7 +27,7 @@ public class CadastrarColaboradorJuridicoCommand {
 	@NotBlank(message = "Sexo é obrigatório")
 	public String sexo;
 
-	@NotBlank(message = "Nascimento é obrigatório")
+	@NotNull(message = "Nascimento é obrigatório")
 	public LocalDate nascimento;
 
 	@NotBlank(message = "Estado cívil é obrigatório")
@@ -40,7 +40,7 @@ public class CadastrarColaboradorJuridicoCommand {
 	public String estadoNascimento;
 
 	@NotBlank(message = "Cidade de nascimento é obrigatório")
-	public String cidadNascimento;
+	public String cidadeNascimento;
 
 	@NotBlank(message = "Nome da mãe é obrigatório")
 	public String nomeMae;

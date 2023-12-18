@@ -33,7 +33,7 @@ class CadastrarColaboradorJuridicoTest {
 			.rg("380.064.778-1")
 			.cpf("286.738.300-52")
 			.nomePai("João")
-			.cidadNascimento("Mogi das Cruzes")
+			.cidadeNascimento("Mogi das Cruzes")
 			.dataExpedicao(LocalDate.now())
 			.estadoCivil("Solteiro")
 			.estadoNascimento("São Paulo")

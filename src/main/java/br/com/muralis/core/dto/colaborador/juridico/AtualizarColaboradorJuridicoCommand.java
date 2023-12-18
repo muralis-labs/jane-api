@@ -47,10 +47,12 @@ public class AtualizarColaboradorJuridicoCommand {
 	private String nomeMae;
 
 	@NotBlank(message = "Telefone celular é obrigatório")
-	@Pattern(regexp = "\\([0-9]{2}\\) [0-9]{4,5}-[0-9]{4}", message = "Telefone celular inválido. Ex (11) 99999-9999")
+	@Pattern(regexp = "\\([0-9]{2}\\) [0-9]{4,5}-[0-9]{4}",
+			message = "Telefone celular inválido. Exemplo (11) 99999-9999")
 	private String telefoneCelular;
 
-	@Pattern(regexp = "\\([0-9]{2}\\) [0-9]{4,5}-[0-9]{4}", message = "Telefone celular inválido. Ex (11) 99999-9999")
+	@Pattern(regexp = "\\([0-9]{2}\\) [0-9]{4,5}-[0-9]{4}",
+			message = "Telefone residencial inválido. Exemplo (11) 99999-9999")
 	private String telefoneResidencial;
 
 	private String nomePai;

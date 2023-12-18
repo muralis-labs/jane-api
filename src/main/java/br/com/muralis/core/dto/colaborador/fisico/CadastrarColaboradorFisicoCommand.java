@@ -50,7 +50,8 @@ public class CadastrarColaboradorFisicoCommand {
 	@Pattern(regexp = "\\([0-9]{2}\\) [0-9]{4,5}-[0-9]{4}", message = "Telefone celular inválido. Ex (11) 99999-9999")
 	private String telefoneCelular;
 
-	@Pattern(regexp = "\\([0-9]{2}\\) [0-9]{4,5}-[0-9]{4}", message = "Telefone celular inválido. Ex (11) 99999-9999")
+	@Pattern(regexp = "\\([0-9]{2}\\) [0-9]{4,5}-[0-9]{4}",
+			message = "Telefone residencial inválido. Ex (11) 99999-9999")
 	private String telefoneResidencial;
 
 	private String nomePai;

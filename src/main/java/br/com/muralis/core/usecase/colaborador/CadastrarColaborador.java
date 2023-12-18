@@ -1,9 +1,9 @@
-package br.com.muralis.core.usecase;
+package br.com.muralis.core.usecase.colaborador;
 
 import br.com.muralis.core.domain.entity.Colaborador;
-import br.com.muralis.core.domain.exception.ColaboradorCadastradoComEmail;
+import br.com.muralis.core.domain.exception.colaborador.ColaboradorCadastradoComEmail;
 import br.com.muralis.core.domain.repository.ColaboradorRepository;
-import br.com.muralis.core.dto.CadastrarColaboradorCommand;
+import br.com.muralis.core.dto.colaborador.CadastrarColaboradorCommand;
 import br.com.muralis.core.mapper.ColaboradorMapper;
 import io.quarkus.logging.Log;
 import jakarta.enterprise.context.ApplicationScoped;

@@ -1,9 +1,10 @@
-package br.com.muralis.core.usecase;
+package br.com.muralis.core.usecase.colaborador;
 
 import br.com.muralis.core.domain.entity.Colaborador;
-import br.com.muralis.core.domain.exception.ColaboradorNaoEncontradoException;
+import br.com.muralis.core.domain.exception.colaborador.ColaboradorNaoEncontradoException;
 import br.com.muralis.core.domain.repository.ColaboradorRepository;
-import br.com.muralis.core.dto.CadastrarColaboradorCommand;
+import br.com.muralis.core.dto.colaborador.CadastrarColaboradorCommand;
+import br.com.muralis.core.usecase.IntegrationProfile;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.TestProfile;
 import jakarta.inject.Inject;

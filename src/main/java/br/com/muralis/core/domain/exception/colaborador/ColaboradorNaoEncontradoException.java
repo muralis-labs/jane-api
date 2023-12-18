@@ -1,5 +1,6 @@
-package br.com.muralis.core.domain.exception;
+package br.com.muralis.core.domain.exception.colaborador;
 
+import br.com.muralis.core.domain.exception.DomainException;
 import io.quarkus.logging.Log;
 
 public class ColaboradorNaoEncontradoException extends DomainException {

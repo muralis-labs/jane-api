@@ -14,6 +14,8 @@ public class ExceptionMessage {
 	}
 
 	public static ExceptionMessage of(String mensagem) {
+		if (mensagem != null)
+			mensagem = mensagem.trim();
 		return new ExceptionMessage(mensagem);
 	}
 

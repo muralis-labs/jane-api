@@ -17,6 +17,8 @@ public class ExceptionMessageWithField {
 	}
 
 	public static ExceptionMessageWithField of(String campo, String mensagem) {
+		if (mensagem != null)
+			mensagem = mensagem.trim();
 		return new ExceptionMessageWithField(mensagem, campo);
 	}
 

@@ -5,6 +5,7 @@ import br.com.muralis.core.domain.exception.DomainException;
 import br.com.muralis.core.domain.repository.ColaboradorJuridicoRepository;
 import br.com.muralis.core.dto.colaborador.juridico.AtualizarColaboradorJuridicoCommand;
 import br.com.muralis.core.dto.colaborador.juridico.CadastrarColaboradorJuridicoCommand;
+import br.com.muralis.core.mock.CPFGenerator;
 import br.com.muralis.core.usecase.IntegrationProfile;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.TestProfile;
@@ -42,7 +43,7 @@ class AtualizarColaboradorJuridicoTest {
 			.nome("Fulano")
 			.email(email)
 			.rg("380.064.778-1")
-			.cpf("286.738.300-52")
+			.cpf(CPFGenerator.generate())
 			.nomePai("João")
 			.cidadeNascimento("Mogi das Cruzes")
 			.dataExpedicao(LocalDate.now())
@@ -67,7 +68,7 @@ class AtualizarColaboradorJuridicoTest {
 		var command = AtualizarColaboradorJuridicoCommand.builder()
 			.nome("Fulano da Silva")
 			.rg("380.064.778-1")
-			.cpf("286.738.300-52")
+			.cpf(CPFGenerator.generate())
 			.nomePai("João")
 			.cidadNascimento("Mogi das Cruzes")
 			.dataExpedicao(LocalDate.now())
@@ -95,7 +96,7 @@ class AtualizarColaboradorJuridicoTest {
 		var command = AtualizarColaboradorJuridicoCommand.builder()
 			.nome("Fulano da Silva")
 			.rg("380.064.778-1")
-			.cpf("286.738.300-52")
+			.cpf(CPFGenerator.generate())
 			.nomePai("João")
 			.cidadNascimento("Mogi das Cruzes")
 			.dataExpedicao(LocalDate.now())
@@ -123,7 +124,7 @@ class AtualizarColaboradorJuridicoTest {
 		var command = AtualizarColaboradorJuridicoCommand.builder()
 			.nome("Fulano da Silva")
 			.rg("380.064.778-1")
-			.cpf("286.738.300-52")
+			.cpf(CPFGenerator.generate())
 			.nomePai("João")
 			.cidadNascimento("Mogi das Cruzes")
 			.dataExpedicao(LocalDate.now())

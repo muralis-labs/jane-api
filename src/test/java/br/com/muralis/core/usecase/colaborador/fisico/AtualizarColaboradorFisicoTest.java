@@ -5,6 +5,7 @@ import br.com.muralis.core.domain.exception.DomainException;
 import br.com.muralis.core.domain.repository.ColaboradorFisicoRepository;
 import br.com.muralis.core.dto.colaborador.fisico.AtualizarColaboradorFisicoCommand;
 import br.com.muralis.core.dto.colaborador.fisico.CadastrarColaboradorFisicoCommand;
+import br.com.muralis.core.mock.CPFGenerator;
 import br.com.muralis.core.usecase.IntegrationProfile;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.TestProfile;
@@ -42,7 +43,7 @@ class AtualizarColaboradorFisicoTest {
 			.nome("Fulano")
 			.email(email)
 			.rg("380.064.778-1")
-			.cpf("286.738.300-52")
+			.cpf(CPFGenerator.generate())
 			.nomePai("João")
 			.cidadeNascimento("Mogi das Cruzes")
 			.dataExpedicao(LocalDate.now())
@@ -67,7 +68,7 @@ class AtualizarColaboradorFisicoTest {
 		var command = AtualizarColaboradorFisicoCommand.builder()
 			.nome("Fulano da Silva")
 			.rg("380.064.778-1")
-			.cpf("286.738.300-52")
+			.cpf(CPFGenerator.generate())
 			.nomePai("João")
 			.cidadeNascimento("Mogi das Cruzes")
 			.dataExpedicao(LocalDate.now())
@@ -95,7 +96,7 @@ class AtualizarColaboradorFisicoTest {
 		var command = AtualizarColaboradorFisicoCommand.builder()
 			.nome("Fulano da Silva")
 			.rg("380.064.778-1")
-			.cpf("286.738.300-52")
+			.cpf(CPFGenerator.generate())
 			.nomePai("João")
 			.cidadeNascimento("Mogi das Cruzes")
 			.dataExpedicao(LocalDate.now())
@@ -123,7 +124,7 @@ class AtualizarColaboradorFisicoTest {
 		var command = AtualizarColaboradorFisicoCommand.builder()
 			.nome("Fulano da Silva")
 			.rg("380.064.778-1")
-			.cpf("286.738.300-52")
+			.cpf(CPFGenerator.generate())
 			.nomePai("João")
 			.cidadeNascimento("Mogi das Cruzes")
 			.dataExpedicao(LocalDate.now())
@@ -148,10 +149,12 @@ class AtualizarColaboradorFisicoTest {
 	void deveLancarExcecaoQuandoOColaboradorJaEstiverCadastradoComOEmailInformado() {
 		var command = AtualizarColaboradorFisicoCommand.builder()
 			.nome("Fulano da Silva")
+			.cpf(CPFGenerator.generate())
 			.email(UUID.randomUUID() + "@gmail.com")
 			.build();
 		var cadastrarCommand = CadastrarColaboradorFisicoCommand.builder()
 			.nome("Fulano")
+			.cpf(CPFGenerator.generate())
 			.email(command.getEmail())
 			.build();
 		cadastrarColaboradorFisico.execute(cadastrarCommand);

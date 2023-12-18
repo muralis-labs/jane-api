@@ -3,6 +3,7 @@ package br.com.muralis.core.usecase.colaborador.juridico;
 import br.com.muralis.core.domain.exception.colaborador.ColaboradorCadastradoComEmail;
 import br.com.muralis.core.domain.repository.ColaboradorJuridicoRepository;
 import br.com.muralis.core.dto.colaborador.juridico.CadastrarColaboradorJuridicoCommand;
+import br.com.muralis.core.mock.CPFGenerator;
 import br.com.muralis.core.usecase.IntegrationProfile;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.TestProfile;
@@ -31,7 +32,7 @@ class CadastrarColaboradorJuridicoTest {
 			.nome("João Junior")
 			.email("pabloteste180850@email.com")
 			.rg("380.064.778-1")
-			.cpf("286.738.300-52")
+			.cpf(CPFGenerator.generate())
 			.nomePai("João")
 			.cidadeNascimento("Mogi das Cruzes")
 			.dataExpedicao(LocalDate.now())

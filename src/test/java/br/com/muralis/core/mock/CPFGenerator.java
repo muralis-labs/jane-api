@@ -32,10 +32,10 @@ public class CPFGenerator {
 
 	public static int calculateVerificationDigit(int[] cpfDigits, int weight) {
 		int sum = 0;
-        for (int cpfDigit : cpfDigits) {
-            sum += cpfDigit * weight;
-            weight--;
-        }
+		for (int cpfDigit : cpfDigits) {
+			sum += cpfDigit * weight;
+			weight--;
+		}
 		int remainder = sum % 11;
 		if (remainder < 2) {
 			return 0;

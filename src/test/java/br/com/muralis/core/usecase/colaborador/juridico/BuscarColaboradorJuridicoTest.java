@@ -21,10 +21,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class BuscarColaboradorJuridicoTest {
 
 	@Inject
-    BuscarColaboradorJuridico buscarColaboradorJuridico;
+	BuscarColaboradorJuridico buscarColaboradorJuridico;
 
 	@Inject
-    CadastrarColaboradorJuridico cadastrarColaboradorJuridico;
+	CadastrarColaboradorJuridico cadastrarColaboradorJuridico;
 
 	@Inject
 	ColaboradorJuridicoRepository colaboradorJuridicoRepository;

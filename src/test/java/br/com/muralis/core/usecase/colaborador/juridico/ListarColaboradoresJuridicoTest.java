@@ -19,10 +19,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class ListarColaboradoresJuridicoTest {
 
 	@Inject
-    ListarColaboradoresJuridico listarColaboradoresJuridico;
+	ListarColaboradoresJuridico listarColaboradoresJuridico;
 
 	@Inject
-    CadastrarColaboradorJuridico cadastrarColaboradorJuridico;
+	CadastrarColaboradorJuridico cadastrarColaboradorJuridico;
 
 	@BeforeEach
 	void setUp() {

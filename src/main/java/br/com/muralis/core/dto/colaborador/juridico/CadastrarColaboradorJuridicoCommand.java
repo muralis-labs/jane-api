@@ -73,4 +73,6 @@ public class CadastrarColaboradorJuridicoCommand {
 	@NotBlank(message = "Grau de instrução é obrigatório")
 	private String grauInstrucao;
 
+	private String empresaId;
+
 }

@@ -7,4 +7,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class ColaboradorJuridico extends Colaborador {
 
+	private Empresa empresa;
+
 }

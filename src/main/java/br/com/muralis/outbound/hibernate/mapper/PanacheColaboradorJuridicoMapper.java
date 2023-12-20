@@ -7,7 +7,7 @@ import org.mapstruct.MappingTarget;
 
 import java.util.List;
 
-@Mapper(componentModel = "cdi")
+@Mapper(componentModel = "cdi", uses = { PanacheEmpresaMapper.class })
 public interface PanacheColaboradorJuridicoMapper {
 
 	PanacheColaboradorJuridico from(ColaboradorJuridico colaborador);

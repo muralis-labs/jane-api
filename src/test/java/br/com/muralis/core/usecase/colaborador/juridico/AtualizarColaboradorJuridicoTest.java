@@ -24,10 +24,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class AtualizarColaboradorJuridicoTest {
 
 	@Inject
-    AtualizarColaboradorJuridico atualizarColaboradorJuridico;
+	AtualizarColaboradorJuridico atualizarColaboradorJuridico;
 
 	@Inject
-    CadastrarColaboradorJuridico cadastrarColaboradorJuridico;
+	CadastrarColaboradorJuridico cadastrarColaboradorJuridico;
 
 	@Inject
 	ColaboradorJuridicoRepository colaboradorJuridicoRepository;

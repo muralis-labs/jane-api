@@ -18,6 +18,7 @@ public class ColaboradorPanacheJuridicoRepository implements ColaboradorJuridico
 	PanacheColaboradorJuridicoMapper panacheColaboradorJuridicoMapper;
 
 	@Override
+	@Transactional
 	public ColaboradorJuridico save(ColaboradorJuridico colaborador) {
 		PanacheColaboradorJuridico panacheColaborador = panacheColaboradorJuridicoMapper.from(colaborador);
 		panacheColaborador.persist();

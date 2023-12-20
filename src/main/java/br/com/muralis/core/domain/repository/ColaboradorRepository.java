@@ -7,10 +7,10 @@ import java.util.Optional;
 
 public interface ColaboradorRepository {
 
-    List<Colaborador> findAll(int page, int size);
+	List<Colaborador> findAll(int page, int size);
 
-    Optional<Colaborador> findById(String id);
+	Optional<Colaborador> findById(String id);
 
-    long count();
+	long count();
 
 }

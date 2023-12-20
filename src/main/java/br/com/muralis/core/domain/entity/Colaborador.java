@@ -1,7 +1,10 @@
 package br.com.muralis.core.domain.entity;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;

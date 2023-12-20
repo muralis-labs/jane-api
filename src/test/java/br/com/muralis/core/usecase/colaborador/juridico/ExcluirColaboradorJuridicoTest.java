@@ -19,10 +19,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class ExcluirColaboradorJuridicoTest {
 
 	@Inject
-    ExcluirColaboradorJuridico excluirColaboradorJuridico;
+	ExcluirColaboradorJuridico excluirColaboradorJuridico;
 
 	@Inject
-    CadastrarColaboradorJuridico cadastrarColaboradorJuridico;
+	CadastrarColaboradorJuridico cadastrarColaboradorJuridico;
 
 	@Inject
 	ColaboradorJuridicoRepository colaboradorJuridicoRepository;

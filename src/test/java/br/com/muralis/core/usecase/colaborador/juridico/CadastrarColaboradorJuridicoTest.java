@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CadastrarColaboradorJuridicoTest {
 
 	@Inject
-    CadastrarColaboradorJuridico cadastrarColaboradorJuridico;
+	CadastrarColaboradorJuridico cadastrarColaboradorJuridico;
 
 	@Inject
 	ColaboradorJuridicoRepository colaboradorJuridicoRepository;
@@ -59,7 +59,10 @@ class CadastrarColaboradorJuridicoTest {
 	@Test
 	@DisplayName("Deve lançar exceção ao cadastrar um colaborador com e-mail já cadastrado")
 	public void deveLancarExcecaoAoCadastrarUmColaboradorComEmailJaCadastrado() {
-		var command = CadastrarColaboradorJuridicoCommand.builder().nome("João").email("pabloteste18120949@email.com").build();
+		var command = CadastrarColaboradorJuridicoCommand.builder()
+			.nome("João")
+			.email("pabloteste18120949@email.com")
+			.build();
 		cadastrarColaboradorJuridico.execute(command);
 		assertThrows(ColaboradorCadastradoComEmail.class, () -> cadastrarColaboradorJuridico.execute(command));
 	}

@@ -21,7 +21,7 @@ public class AtualizarColaboradorJuridicoCommand {
 	@NotBlank(message = "Nome é obrigatório")
 	private String nome;
 
-	@Email(message = "Email inválido")
+	@Email(message = "E-mail inválido")
 	@NotBlank(message = "Email é obrigatório")
 	private String email;
 
@@ -41,7 +41,7 @@ public class AtualizarColaboradorJuridicoCommand {
 	private String estadoNascimento;
 
 	@NotBlank(message = "Cidade de nascimento é obrigatório")
-	private String cidadNascimento;
+	private String cidadeNascimento;
 
 	@NotBlank(message = "Nome da mãe é obrigatório")
 	private String nomeMae;

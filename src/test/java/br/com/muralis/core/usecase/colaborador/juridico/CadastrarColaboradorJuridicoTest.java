@@ -1,5 +1,6 @@
 package br.com.muralis.core.usecase.colaborador.juridico;
 
+import br.com.muralis.core.domain.exception.colaborador.ColaboradorCadastradoComCpf;
 import br.com.muralis.core.domain.exception.colaborador.ColaboradorCadastradoComEmail;
 import br.com.muralis.core.domain.repository.ColaboradorJuridicoRepository;
 import br.com.muralis.core.dto.colaborador.juridico.CadastrarColaboradorJuridicoCommand;
@@ -65,6 +66,14 @@ class CadastrarColaboradorJuridicoTest {
 			.build();
 		cadastrarColaboradorJuridico.execute(command);
 		assertThrows(ColaboradorCadastradoComEmail.class, () -> cadastrarColaboradorJuridico.execute(command));
+	}
+
+	@Test
+	@DisplayName("Deve lançar exceção ao cadastrar um colaborador com cpf já cadastrado")
+	public void deveLancarExcecaoAoCadastrarUmColaboradorComCpfJaCadastrado() {
+		var command = CadastrarColaboradorJuridicoCommand.builder().nome("João").cpf(CPFGenerator.generate()).build();
+		cadastrarColaboradorJuridico.execute(command);
+		assertThrows(ColaboradorCadastradoComCpf.class, () -> cadastrarColaboradorJuridico.execute(command));
 	}
 
 }

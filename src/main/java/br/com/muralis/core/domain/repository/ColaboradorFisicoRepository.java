@@ -21,4 +21,6 @@ public interface ColaboradorFisicoRepository {
 
 	ColaboradorFisico update(ColaboradorFisico colaboradorParaAtualizar);
 
+	boolean existsByCpf(String cpf);
+
 }

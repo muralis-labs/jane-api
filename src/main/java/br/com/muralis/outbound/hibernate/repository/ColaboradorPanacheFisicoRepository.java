@@ -39,6 +39,11 @@ public class ColaboradorPanacheFisicoRepository implements ColaboradorFisicoRepo
 	}
 
 	@Override
+	public boolean existsByCpf(String cpf) {
+		return PanacheColaboradorFisico.count("cpf", cpf) > 0;
+	}
+
+	@Override
 	public boolean deleteById(String id) {
 		return PanacheColaboradorFisico.deleteById(id);
 	}

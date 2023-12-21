@@ -16,6 +16,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -82,7 +83,7 @@ public class ColaboradorEmpresaTest {
 	private CadastrarColaboradorJuridicoCommand createColaboradorCommand() {
 		return CadastrarColaboradorJuridicoCommand.builder()
 			.nome("João Junior")
-			.email("pabloteste180850@email.com")
+			.email("pabloteste" + UUID.randomUUID() + "@email.com")
 			.rg("380.064.778-1")
 			.cpf(CPFGenerator.generate())
 			.nomePai("João")

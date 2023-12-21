@@ -1,8 +1,10 @@
 package br.com.muralis.core.usecase.colaborador.fisico;
 
+import br.com.muralis.core.domain.exception.colaborador.ColaboradorCadastradoComCpf;
 import br.com.muralis.core.domain.exception.colaborador.ColaboradorCadastradoComEmail;
 import br.com.muralis.core.domain.repository.ColaboradorFisicoRepository;
 import br.com.muralis.core.dto.colaborador.fisico.CadastrarColaboradorFisicoCommand;
+import br.com.muralis.core.mock.CPFGenerator;
 import br.com.muralis.core.usecase.IntegrationProfile;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.TestProfile;
@@ -61,6 +63,14 @@ class CadastrarColaboradorFisicoTest {
 		var command = CadastrarColaboradorFisicoCommand.builder().nome("João").email("joaooct231142@email.com").build();
 		cadastrarColaboradorFisico.execute(command);
 		assertThrows(ColaboradorCadastradoComEmail.class, () -> cadastrarColaboradorFisico.execute(command));
+	}
+
+	@Test
+	@DisplayName("Deve lançar exceção ao cadastrar um colaborador com cpf já cadastrado")
+	public void deveLancarExcecaoAoCadastrarUmColaboradorComCpfJaCadastrado() {
+		var command = CadastrarColaboradorFisicoCommand.builder().nome("João").cpf(CPFGenerator.generate()).build();
+		cadastrarColaboradorFisico.execute(command);
+		assertThrows(ColaboradorCadastradoComCpf.class, () -> cadastrarColaboradorFisico.execute(command));
 	}
 
 }

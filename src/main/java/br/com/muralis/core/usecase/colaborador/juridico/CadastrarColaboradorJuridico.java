@@ -1,6 +1,7 @@
 package br.com.muralis.core.usecase.colaborador.juridico;
 
 import br.com.muralis.core.domain.entity.ColaboradorJuridico;
+import br.com.muralis.core.domain.exception.colaborador.ColaboradorCadastradoComCpf;
 import br.com.muralis.core.domain.exception.colaborador.ColaboradorCadastradoComEmail;
 import br.com.muralis.core.domain.repository.ColaboradorJuridicoRepository;
 import br.com.muralis.core.dto.colaborador.juridico.CadastrarColaboradorJuridicoCommand;
@@ -21,14 +22,16 @@ public class CadastrarColaboradorJuridico {
 
 	@Transactional
 	public ColaboradorJuridico execute(CadastrarColaboradorJuridicoCommand command) {
-		Log.info("Preparando para cadastrar colaborador: " + command.getEmail());
-		if (colaboradorJuridicoRepository.existsByEmail(command.getEmail()))
+		Log.info("Preparando para cadastrar colaborador: " + command.getNome());
+		if (command.getEmail() != null && colaboradorJuridicoRepository.existsByEmail(command.getEmail()))
 			throw new ColaboradorCadastradoComEmail(command.getEmail());
+		if (command.getCpf() != null && colaboradorJuridicoRepository.existsByCpf(command.getCpf()))
+			throw new ColaboradorCadastradoComCpf(command.getCpf());
 		ColaboradorJuridico colaborador = colaboradorJuridicoMapper.from(command);
 		colaborador.cadastrar();
-		Log.info("Colaborador preparado para salvar: " + colaborador.getEmail());
+		Log.info("Colaborador preparado para salvar: " + colaborador.getNome());
 		ColaboradorJuridico colaboradorSalvo = colaboradorJuridicoRepository.save(colaborador);
-		Log.info("Colaborador salvo: " + colaboradorSalvo.getEmail());
+		Log.info("Colaborador salvo: " + colaboradorSalvo.getNome());
 		return colaboradorSalvo;
 	}
 

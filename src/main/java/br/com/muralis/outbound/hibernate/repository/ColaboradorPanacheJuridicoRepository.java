@@ -40,6 +40,11 @@ public class ColaboradorPanacheJuridicoRepository implements ColaboradorJuridico
 	}
 
 	@Override
+	public boolean existsByCpf(String cpf) {
+		return PanacheColaboradorJuridico.count("cpf", cpf) > 0;
+	}
+
+	@Override
 	public boolean deleteById(String id) {
 		return PanacheColaboradorJuridico.deleteById(id);
 	}

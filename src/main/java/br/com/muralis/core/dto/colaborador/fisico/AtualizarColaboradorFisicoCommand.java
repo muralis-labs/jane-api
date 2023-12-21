@@ -21,7 +21,7 @@ public class AtualizarColaboradorFisicoCommand {
 	@NotBlank(message = "Nome é obrigatório")
 	private String nome;
 
-	@Email(message = "Email inválido")
+	@Email(message = "E-mail inválido")
 	@NotBlank(message = "Email é obrigatório")
 	private String email;
 

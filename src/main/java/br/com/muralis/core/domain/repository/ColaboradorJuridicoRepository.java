@@ -21,4 +21,6 @@ public interface ColaboradorJuridicoRepository {
 
 	ColaboradorJuridico update(ColaboradorJuridico colaboradorParaAtualizar);
 
+	boolean existsByCpf(String cpf);
+
 }

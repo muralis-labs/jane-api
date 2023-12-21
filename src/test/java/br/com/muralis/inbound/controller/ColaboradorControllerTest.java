@@ -57,7 +57,7 @@ class ColaboradorControllerTest {
 	void deveRetornarErro400QuandoTelefoneCelularInvalido() {
 		var colaborador = CadastrarColaboradorCommand.builder().nome("Fulano").telefoneCelular("123").build();
 		ValidatableResponse response = createColaboradorWithError(TipoColaborador.FISICO, colaborador);
-		response.body("mensagem", equalTo("Telefone celular inválido. Ex (11) 99999-9999"));
+		response.body("mensagem", equalTo("Telefone celular inválido. Ex (11) 99999-9999 ou (11) 9999-9999"));
 	}
 
 	@Test

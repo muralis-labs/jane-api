@@ -2,6 +2,7 @@ package br.com.muralis.outbound.hibernate.mapper;
 
 import br.com.muralis.core.domain.entity.ColaboradorJuridico;
 import br.com.muralis.outbound.hibernate.table.PanacheColaboradorJuridico;
+import jakarta.inject.Inject;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 

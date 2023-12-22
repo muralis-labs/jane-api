@@ -57,4 +57,18 @@ public class CadastrarColaboradorCommand {
 
 	private String grauInstrucao;
 
+	public String cep;
+
+	public String estado;
+
+	public String cidade;
+
+	public String bairro;
+
+	public String endereco;
+
+	public Integer numeroResidencial;
+
+	public String complemento;
+
 }

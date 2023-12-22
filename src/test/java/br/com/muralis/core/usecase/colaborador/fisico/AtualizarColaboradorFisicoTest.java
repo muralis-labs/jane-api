@@ -83,11 +83,24 @@ class AtualizarColaboradorFisicoTest {
 			.telefoneCelular("11971723993")
 			.telefoneResidencial("")
 			.email(email)
+			.cep("111111111")
+			.estado("São Paulo")
+			.cidade("Mogi das Cruzes")
+			.bairro("Parque Monte Líbano")
+			.complemento("Casa 1")
+			.numeroResidencial(123)
+			.endereco("Rua dos coelhos")
 			.build();
 		atualizarColaboradorFisico.execute(id, command);
 		var colaborador = colaboradorFisicoRepository.findById(id).orElseThrow();
 		assertEquals("Fulano da Silva", colaborador.getNome());
 		assertEquals(email, colaborador.getEmail());
+		assertEquals(colaborador.getNumeroResidencial(), 123);
+		assertEquals(colaborador.getBairro(), "Parque Monte Líbano");
+		assertEquals(colaborador.getCep(), "111111111");
+		assertEquals(colaborador.getComplemento(), "Casa 1");
+		assertEquals(colaborador.getCidade(), "Mogi das Cruzes");
+		assertEquals(colaborador.getEstado(), "São Paulo");
 	}
 
 	@Test

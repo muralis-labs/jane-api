@@ -70,6 +70,27 @@ public class Colaborador {
 	@Setter
 	private String grauInstrucao;
 
+	@Setter
+	public String cep;
+
+	@Setter
+	public String estado;
+
+	@Setter
+	public String cidade;
+
+	@Setter
+	public String bairro;
+
+	@Setter
+	public String endereco;
+
+	@Setter
+	public Integer numeroResidencial;
+
+	@Setter
+	public String complemento;
+
 	public void cadastrar() {
 		this.id = UUID.randomUUID().toString();
 	}

@@ -47,6 +47,12 @@ class CadastrarColaboradorFisicoTest {
 			.paisNascimento("Brasil")
 			.telefoneCelular("11971723993")
 			.telefoneResidencial("")
+			.cep("111111111")
+			.estado("São Paulo")
+			.cidade("Mogi das Cruzes")
+			.complemento("Casa 1")
+			.numeroResidencial(123)
+			.endereco("Rua dos coelhos")
 			.build();
 		var colaborador = cadastrarColaboradorFisico.execute(command);
 		assertNotNull(colaborador.getId());
@@ -55,6 +61,12 @@ class CadastrarColaboradorFisicoTest {
 		assertEquals(colaborador.getId(), colaboradorDoBanco.get().getId());
 		assertEquals(colaborador.getNome(), colaboradorDoBanco.get().getNome());
 		assertEquals(colaborador.getEmail(), colaboradorDoBanco.get().getEmail());
+		assertEquals(colaborador.getNumeroResidencial(), colaboradorDoBanco.get().getNumeroResidencial());
+		assertEquals(colaborador.getBairro(), colaboradorDoBanco.get().getBairro());
+		assertEquals(colaborador.getCep(), colaboradorDoBanco.get().getCep());
+		assertEquals(colaborador.getComplemento(), colaboradorDoBanco.get().getComplemento());
+		assertEquals(colaborador.getCidade(), colaboradorDoBanco.get().getCidade());
+		assertEquals(colaborador.getEstado(), colaboradorDoBanco.get().getEstado());
 	}
 
 	@Test

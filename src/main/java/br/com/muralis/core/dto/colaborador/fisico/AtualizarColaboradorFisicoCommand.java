@@ -72,4 +72,18 @@ public class AtualizarColaboradorFisicoCommand {
 	@NotBlank(message = "Grau de instrução é obrigatório")
 	private String grauInstrucao;
 
+	public String cep;
+
+	public String estado;
+
+	public String cidade;
+
+	public String bairro;
+
+	public String endereco;
+
+	public Integer numeroResidencial;
+
+	public String complemento;
+
 }

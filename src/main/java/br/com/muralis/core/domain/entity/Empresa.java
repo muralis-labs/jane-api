@@ -1,5 +1,6 @@
 package br.com.muralis.core.domain.entity;
 
+import br.com.muralis.core.objectValue.Endereco;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,28 +40,8 @@ public class Empresa {
 
 	@Setter
 	private String inscricaoEstadual;
-
 	@Setter
-	private String cep;
-
-	@Setter
-	private String estado;
-
-	@Setter
-	private String cidade;
-
-	@Setter
-	private String bairro;
-
-	@Setter
-	private String endereco;
-
-	@Setter
-	private Integer numero;
-
-	@Setter
-	private String complemento;
-
+	public Endereco endereco;
 	@Setter
 	private String telefone;
 

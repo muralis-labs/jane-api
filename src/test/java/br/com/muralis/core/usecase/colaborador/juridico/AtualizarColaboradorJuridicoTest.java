@@ -6,6 +6,7 @@ import br.com.muralis.core.domain.repository.ColaboradorJuridicoRepository;
 import br.com.muralis.core.dto.colaborador.juridico.AtualizarColaboradorJuridicoCommand;
 import br.com.muralis.core.dto.colaborador.juridico.CadastrarColaboradorJuridicoCommand;
 import br.com.muralis.core.mock.CPFGenerator;
+import br.com.muralis.core.objectValue.Endereco;
 import br.com.muralis.core.usecase.IntegrationProfile;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.TestProfile;
@@ -57,6 +58,14 @@ class AtualizarColaboradorJuridicoTest {
 			.paisNascimento("Brasil")
 			.telefoneCelular("11971723993")
 			.telefoneResidencial("")
+			.endereco(Endereco.builder()
+					.cep("111111111")
+					.estado("São Paulo")
+					.cidade("Mogi das Cruzes")
+					.complemento("Casa 1")
+					.numero(123)
+					.endereco("Rua dos coelhos")
+					.build())
 			.build();
 		Colaborador colaborador = cadastrarColaboradorJuridico.execute(cadastrarCommand);
 		id = colaborador.getId();
@@ -83,11 +92,20 @@ class AtualizarColaboradorJuridicoTest {
 			.telefoneCelular("11971723993")
 			.telefoneResidencial("")
 			.email(email)
+			.endereco(Endereco.builder()
+					.cep("111111112")
+					.estado("São Paulo")
+					.cidade("Mogi das Cruzes")
+					.complemento("Casa 1")
+					.numero(123)
+					.endereco("Rua dos coelhos")
+					.build())
 			.build();
 		atualizarColaboradorJuridico.execute(id, command);
 		var colaborador = colaboradorJuridicoRepository.findById(id).orElseThrow();
 		assertEquals("Fulano da Silva", colaborador.getNome());
 		assertEquals(email, colaborador.getEmail());
+		assertEquals("111111112", colaborador.getEndereco().getCep());
 	}
 
 	@Test

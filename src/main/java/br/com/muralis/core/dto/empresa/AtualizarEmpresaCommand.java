@@ -1,5 +1,6 @@
 package br.com.muralis.core.dto.empresa;
 
+import br.com.muralis.core.objectValue.Endereco;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -46,28 +47,8 @@ public class AtualizarEmpresaCommand {
 	@NotBlank(message = "Inscrição estadual é obrigatório")
 	public String inscricaoEstadual;
 
-	@NotBlank(message = "CEP é obrigatório")
-	@Length(min = 8, max = 8, message = "CEP deve conter 8 dígitos")
-	public String cep;
-
-	@NotBlank(message = "Estado é obrigatório")
-	public String estado;
-
-	@NotBlank(message = "Cidade é obrigatório")
-	public String cidade;
-
-	@NotBlank(message = "Bairro é obrigatório")
-	public String bairro;
-
-	@NotBlank(message = "Endereço é obrigatório")
-	public String endereco;
-
-	@NotBlank(message = "Número é obrigatório")
-	public Integer numero;
-
+	public Endereco endereco;
 	@NotBlank(message = "Telefone é obrigatório")
 	public String telefone;
-
-	public String complemento;
 
 }

@@ -1,5 +1,6 @@
 package br.com.muralis.core.dto.colaborador.juridico;
 
+import br.com.muralis.core.objectValue.Endereco;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -72,5 +73,7 @@ public class AtualizarColaboradorJuridicoCommand {
 
 	@NotBlank(message = "Grau de instrução é obrigatório")
 	private String grauInstrucao;
+
+	private Endereco endereco;
 
 }

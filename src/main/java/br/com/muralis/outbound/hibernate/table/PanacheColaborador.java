@@ -1,10 +1,8 @@
 package br.com.muralis.outbound.hibernate.table;
 
+import br.com.muralis.outbound.hibernate.objectValue.Endereco;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Index;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -49,5 +47,7 @@ public class PanacheColaborador extends PanacheEntityBase {
 	public String cpf;
 
 	public String grauInstrucao;
+	@Embedded
+	public Endereco endereco;
 
 }

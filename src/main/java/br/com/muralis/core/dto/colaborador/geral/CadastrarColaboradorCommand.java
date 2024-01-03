@@ -1,5 +1,6 @@
 package br.com.muralis.core.dto.colaborador.geral;
 
+import br.com.muralis.core.objectValue.Endereco;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -56,5 +57,7 @@ public class CadastrarColaboradorCommand {
 	private String cpf;
 
 	private String grauInstrucao;
+
+	private Endereco endereco;
 
 }

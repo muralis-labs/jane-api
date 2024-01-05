@@ -4,6 +4,7 @@ import br.com.muralis.core.domain.entity.Colaborador;
 import br.com.muralis.core.domain.exception.colaborador.ColaboradorNaoEncontradoException;
 import br.com.muralis.core.domain.repository.ColaboradorJuridicoRepository;
 import br.com.muralis.core.dto.colaborador.juridico.CadastrarColaboradorJuridicoCommand;
+import br.com.muralis.core.objectValue.DadosContratuaisJuridico;
 import br.com.muralis.core.usecase.IntegrationProfile;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.TestProfile;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -36,6 +38,15 @@ class BuscarColaboradorJuridicoTest {
 		var command = CadastrarColaboradorJuridicoCommand.builder()
 			.nome("Fulano")
 			.email("fulano" + UUID.randomUUID() + "@gmail.com")
+			.dadosContratuaisJuridico(DadosContratuaisJuridico.builder()
+					.regimeSocial("Regime")
+					.CNPJ("27.535.284/0001-77")
+					.dataContrato(LocalDate.now())
+					.inscricaoEstadual("123")
+					.mensalidadeContrato("1200")
+					.objetoContratual("Objeto")
+					.razaoSocial("Empresa")
+					.build())
 			.build();
 		colaborador = cadastrarColaboradorJuridico.execute(command);
 	}
@@ -53,6 +64,7 @@ class BuscarColaboradorJuridicoTest {
 		assertEquals(colaboradorDoBanco.getId(), colaboradorEncontrado.getId());
 		assertEquals(colaboradorDoBanco.getNome(), colaboradorEncontrado.getNome());
 		assertEquals(colaboradorDoBanco.getEmail(), colaboradorEncontrado.getEmail());
+		assertEquals(colaboradorDoBanco.getDadosContratuaisJuridico().CNPJ, colaboradorEncontrado.getDadosContratuaisJuridico().CNPJ);
 	}
 
 	@Test

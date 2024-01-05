@@ -1,5 +1,6 @@
 package br.com.muralis.core.dto.colaborador.juridico;
 
+import br.com.muralis.core.objectValue.DadosContratuaisJuridico;
 import br.com.muralis.core.objectValue.Endereco;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -75,5 +76,6 @@ public class AtualizarColaboradorJuridicoCommand {
 	private String grauInstrucao;
 
 	private Endereco endereco;
+	private DadosContratuaisJuridico dadosContratuaisJuridico;
 
 }

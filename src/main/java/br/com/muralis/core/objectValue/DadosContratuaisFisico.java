@@ -12,13 +12,21 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DadosContratuaisFisico {
-    public String cargo;
-    public String salario;
-    public String regime;
-    public String numeroPIS;
-    public String numeroCTPS;
-    public String serieCTPS;
-    public LocalDate dataAdmissao;
-    public String fluxoAdmissao;
+
+	public String cargo;
+
+	public String salario;
+
+	public String regime;
+
+	public String numeroPIS;
+
+	public String numeroCTPS;
+
+	public String serieCTPS;
+
+	public LocalDate dataAdmissao;
+
+	public String fluxoAdmissao;
 
 }

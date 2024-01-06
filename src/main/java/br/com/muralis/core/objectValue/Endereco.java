@@ -10,17 +10,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Endereco {
-    public String cep;
 
-    public String estado;
+	public String cep;
 
-    public String cidade;
+	public String estado;
 
-    public String bairro;
+	public String cidade;
 
-    public String endereco;
+	public String bairro;
 
-    public Integer numero;
+	public String endereco;
 
-    public String complemento;
+	public Integer numero;
+
+	public String complemento;
+
 }

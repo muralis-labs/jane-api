@@ -12,5 +12,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 public class CadastrarColaboradorFisicoCommand extends CadastrarColaboradorCommand {
-    private DadosContratuaisFisico dadosContratuaisFisico;
+
+	private DadosContratuaisFisico dadosContratuaisFisico;
+
 }

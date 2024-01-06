@@ -12,6 +12,8 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @RegisterForReflection
 public class ColaboradorFisico extends Colaborador {
-    @Setter
-    private DadosContratuaisFisico dadosContratuaisFisico;
+
+	@Setter
+	private DadosContratuaisFisico dadosContratuaisFisico;
+
 }

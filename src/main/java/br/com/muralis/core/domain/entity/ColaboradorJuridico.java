@@ -14,6 +14,7 @@ public class ColaboradorJuridico extends Colaborador {
 
 	@JsonIgnore
 	private Empresa empresa;
+
 	@Setter
 	private DadosContratuaisJuridico dadosContratuaisJuridico;
 

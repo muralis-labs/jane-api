@@ -40,8 +40,10 @@ public class Empresa {
 
 	@Setter
 	private String inscricaoEstadual;
+
 	@Setter
 	public Endereco endereco;
+
 	@Setter
 	private String telefone;
 

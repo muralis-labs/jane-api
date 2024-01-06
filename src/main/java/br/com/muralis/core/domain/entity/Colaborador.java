@@ -1,5 +1,6 @@
 package br.com.muralis.core.domain.entity;
 
+import br.com.muralis.core.objectValue.Endereco;
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -69,6 +70,9 @@ public class Colaborador {
 
 	@Setter
 	private String grauInstrucao;
+
+	@Setter
+	private Endereco endereco;
 
 	public void cadastrar() {
 		this.id = UUID.randomUUID().toString();

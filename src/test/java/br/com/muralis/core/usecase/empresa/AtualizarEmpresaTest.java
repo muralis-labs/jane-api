@@ -4,6 +4,7 @@ import br.com.muralis.core.domain.entity.Empresa;
 import br.com.muralis.core.domain.repository.EmpresaRepository;
 import br.com.muralis.core.dto.empresa.AtualizarEmpresaCommand;
 import br.com.muralis.core.dto.empresa.CadastrarEmpresaCommand;
+import br.com.muralis.core.objectValue.Endereco;
 import br.com.muralis.core.usecase.IntegrationProfile;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.TestProfile;
@@ -40,22 +41,25 @@ public class AtualizarEmpresaTest {
 		var cadastrarCommand = CadastrarEmpresaCommand.builder()
 			.email(email)
 			.razaoSocial("Muralis")
-			.cep("1010101")
 			.email("email@email.com")
 			.cnpj("38.278.587/0001-78")
-			.bairro("Jd. Europa")
-			.cidade("Mogi das Cruzes")
 			.dataContrato(LocalDate.now())
-			.complemento("")
-			.estado("São Paulo")
-			.endereco("Rua Conceição Augusto Penha")
-			.numero(30)
 			.inscricaoEstadual("101010")
 			.inscricaoMunicipal("102030")
 			.objetoContratual("Contrato")
 			.regimeTributario("Simples nacional")
 			.mensalidadeContrato("100")
 			.telefone("1191919102")
+			.endereco(Endereco
+					.builder()
+					.numero(30)
+					.endereco("Rua Conceição Augusto Penha")
+					.estado("São Paulo")
+					.complemento("")
+					.cidade("Mogi das Cruzes")
+					.bairro("Jd. Europa")
+					.cep("1010101")
+					.build())
 			.build();
 		Empresa empresa = cadastrarEmpresa.execute(cadastrarCommand);
 		id = empresa.getId();
@@ -66,21 +70,24 @@ public class AtualizarEmpresaTest {
 	void deveAtualizarUmEmpresa() {
 		var command = AtualizarEmpresaCommand.builder()
 			.razaoSocial("Muralis123")
-			.cep("1010101")
 			.email("email@email.com")
 			.cnpj("38.278.587/0001-78")
-			.bairro("Jd. Europa")
-			.cidade("Mogi das Cruzes")
 			.dataContrato(LocalDate.now())
-			.complemento("")
-			.estado("São Paulo")
-			.endereco("Rua Conceição Augusto Penha")
-			.numero(30)
 			.inscricaoEstadual("101010")
 			.inscricaoMunicipal("102030")
 			.objetoContratual("Contrato")
 			.regimeTributario("Simples nacional")
 			.mensalidadeContrato("100")
+			.endereco(Endereco
+					.builder()
+					.numero(30)
+					.endereco("Rua Conceição Augusto Penha")
+					.estado("São Paulo")
+					.complemento("")
+					.cidade("Mogi das Cruzes")
+					.bairro("Jd. Europa")
+					.cep("1010102")
+					.build())
 			.telefone("1191919102")
 			.email(email)
 			.build();
@@ -89,6 +96,7 @@ public class AtualizarEmpresaTest {
 		assertEquals("Muralis123", empresa.getRazaoSocial());
 		assertEquals(email, empresa.getEmail());
 		assertEquals("38.278.587/0001-78", empresa.getCnpj());
+		assertEquals("1010102", empresa.getEndereco().getCep());
 	}
 
 }

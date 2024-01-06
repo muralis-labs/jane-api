@@ -5,6 +5,8 @@ import br.com.muralis.core.domain.exception.colaborador.ColaboradorCadastradoCom
 import br.com.muralis.core.domain.repository.ColaboradorJuridicoRepository;
 import br.com.muralis.core.dto.colaborador.juridico.CadastrarColaboradorJuridicoCommand;
 import br.com.muralis.core.mock.CPFGenerator;
+import br.com.muralis.core.objectValue.DadosContratuaisJuridico;
+import br.com.muralis.core.objectValue.Endereco;
 import br.com.muralis.core.usecase.IntegrationProfile;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.TestProfile;
@@ -47,6 +49,23 @@ class CadastrarColaboradorJuridicoTest {
 			.paisNascimento("Brasil")
 			.telefoneCelular("11971723993")
 			.telefoneResidencial("")
+			.endereco(Endereco.builder()
+					.cep("111111111")
+					.estado("São Paulo")
+					.cidade("Mogi das Cruzes")
+					.complemento("Casa 1")
+					.numero(123)
+					.endereco("Rua dos coelhos")
+					.build())
+			.dadosContratuaisJuridico(DadosContratuaisJuridico.builder()
+					.regimeSocial("Regime")
+					.CNPJ("27.535.284/0001-77")
+					.dataContrato(LocalDate.now())
+					.inscricaoEstadual("123")
+					.mensalidadeContrato("1200")
+					.objetoContratual("Objeto")
+					.razaoSocial("Empresa")
+					.build())
 			.build();
 		var colaborador = cadastrarColaboradorJuridico.execute(command);
 		assertNotNull(colaborador.getId());
@@ -55,6 +74,9 @@ class CadastrarColaboradorJuridicoTest {
 		assertEquals(colaborador.getId(), colaboradorDoBanco.get().getId());
 		assertEquals(colaborador.getNome(), colaboradorDoBanco.get().getNome());
 		assertEquals(colaborador.getEmail(), colaboradorDoBanco.get().getEmail());
+		assertNotNull(colaboradorDoBanco.get().getEndereco());
+		assertEquals(colaborador.getEndereco().getCep(), colaboradorDoBanco.get().getEndereco().getCep());
+		assertEquals(colaborador.getDadosContratuaisJuridico().mensalidadeContrato, colaboradorDoBanco.get().getDadosContratuaisJuridico().mensalidadeContrato);
 	}
 
 	@Test

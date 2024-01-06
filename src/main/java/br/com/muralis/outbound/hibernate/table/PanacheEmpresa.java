@@ -1,5 +1,6 @@
 package br.com.muralis.outbound.hibernate.table;
 
+import br.com.muralis.outbound.hibernate.objectValue.Endereco;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 
@@ -32,19 +33,8 @@ public class PanacheEmpresa extends PanacheEntityBase {
 
 	public String inscricaoEstadual;
 
-	public String cep;
-
-	public String estado;
-
-	public String cidade;
-
-	public String bairro;
-
-	public String endereco;
-
-	public Integer numero;
-
-	public String complemento;
+	@Embedded
+	public Endereco endereco;
 
 	public String telefone;
 

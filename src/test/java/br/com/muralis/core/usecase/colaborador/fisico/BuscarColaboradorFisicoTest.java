@@ -4,6 +4,7 @@ import br.com.muralis.core.domain.entity.Colaborador;
 import br.com.muralis.core.domain.exception.colaborador.ColaboradorNaoEncontradoException;
 import br.com.muralis.core.domain.repository.ColaboradorFisicoRepository;
 import br.com.muralis.core.dto.colaborador.fisico.CadastrarColaboradorFisicoCommand;
+import br.com.muralis.core.objectValue.DadosContratuaisFisico;
 import br.com.muralis.core.usecase.IntegrationProfile;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.TestProfile;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -36,6 +38,16 @@ class BuscarColaboradorFisicoTest {
 		var command = CadastrarColaboradorFisicoCommand.builder()
 			.nome("Fulano")
 			.email("fulano" + UUID.randomUUID() + "@gmail.com")
+			.dadosContratuaisFisico(DadosContratuaisFisico.builder()
+					.serieCTPS("1234")
+					.cargo("Desenvolvedor")
+					.dataAdmissao(LocalDate.now())
+					.fluxoAdmissao("Padrão")
+					.numeroCTPS("1234")
+					.numeroPIS("1234")
+					.regime("Normal")
+					.salario("7500")
+					.build())
 			.build();
 		colaborador = cadastrarColaboradorFisico.execute(command);
 	}
@@ -51,6 +63,7 @@ class BuscarColaboradorFisicoTest {
 		var colaboradorDoBanco = colaboradorFisicoRepository.findById(colaborador.getId()).orElse(null);
 		assertNotNull(colaboradorDoBanco);
 		assertEquals(colaboradorDoBanco.getId(), colaboradorEncontrado.getId());
+		assertEquals(colaboradorDoBanco.getDadosContratuaisFisico().getCargo(), colaboradorEncontrado.getDadosContratuaisFisico().getCargo());
 		assertEquals(colaboradorDoBanco.getNome(), colaboradorEncontrado.getNome());
 		assertEquals(colaboradorDoBanco.getEmail(), colaboradorEncontrado.getEmail());
 	}

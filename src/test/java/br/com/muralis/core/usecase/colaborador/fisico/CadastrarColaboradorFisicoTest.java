@@ -5,6 +5,7 @@ import br.com.muralis.core.domain.exception.colaborador.ColaboradorCadastradoCom
 import br.com.muralis.core.domain.repository.ColaboradorFisicoRepository;
 import br.com.muralis.core.dto.colaborador.fisico.CadastrarColaboradorFisicoCommand;
 import br.com.muralis.core.mock.CPFGenerator;
+import br.com.muralis.core.objectValue.DadosContratuaisFisico;
 import br.com.muralis.core.objectValue.Endereco;
 import br.com.muralis.core.usecase.IntegrationProfile;
 import io.quarkus.test.junit.QuarkusTest;
@@ -56,6 +57,16 @@ class CadastrarColaboradorFisicoTest {
 					.numero(123)
 					.endereco("Rua dos coelhos")
 					.build())
+			.dadosContratuaisFisico(DadosContratuaisFisico.builder()
+					.serieCTPS("1234")
+					.cargo("Desenvolvedor")
+					.dataAdmissao(LocalDate.now())
+					.fluxoAdmissao("Padrão")
+					.numeroCTPS("1234")
+					.numeroPIS("1234")
+					.regime("Normal")
+					.salario("7500")
+					.build())
 			.build();
 		var colaborador = cadastrarColaboradorFisico.execute(command);
 		assertNotNull(colaborador.getId());
@@ -66,6 +77,7 @@ class CadastrarColaboradorFisicoTest {
 		assertEquals(colaborador.getEmail(), colaboradorDoBanco.get().getEmail());
 		assertNotNull(colaboradorDoBanco.get().getEndereco());
 		assertEquals(colaborador.getEndereco().getCep(), colaboradorDoBanco.get().getEndereco().getCep());
+		assertEquals(colaborador.getDadosContratuaisFisico().getCargo(), colaboradorDoBanco.get().getDadosContratuaisFisico().getCargo());
 	}
 
 	@Test

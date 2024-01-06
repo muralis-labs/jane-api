@@ -1,5 +1,6 @@
 package br.com.muralis.core.dto.colaborador.fisico;
 
+import br.com.muralis.core.objectValue.DadosContratuaisFisico;
 import br.com.muralis.core.objectValue.Endereco;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -74,5 +75,7 @@ public class AtualizarColaboradorFisicoCommand {
 	private String grauInstrucao;
 
 	private Endereco endereco;
+
+	private DadosContratuaisFisico dadosContratuaisFisico;
 
 }

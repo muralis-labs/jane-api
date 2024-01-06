@@ -6,6 +6,7 @@ import br.com.muralis.core.domain.repository.ColaboradorFisicoRepository;
 import br.com.muralis.core.dto.colaborador.fisico.AtualizarColaboradorFisicoCommand;
 import br.com.muralis.core.dto.colaborador.fisico.CadastrarColaboradorFisicoCommand;
 import br.com.muralis.core.mock.CPFGenerator;
+import br.com.muralis.core.objectValue.DadosContratuaisFisico;
 import br.com.muralis.core.objectValue.Endereco;
 import br.com.muralis.core.usecase.IntegrationProfile;
 import io.quarkus.test.junit.QuarkusTest;
@@ -66,6 +67,16 @@ class AtualizarColaboradorFisicoTest {
 					.numero(123)
 					.endereco("Rua dos coelhos")
 					.build())
+			.dadosContratuaisFisico(DadosContratuaisFisico.builder()
+					.serieCTPS("1234")
+					.cargo("Desenvolvedor")
+					.dataAdmissao(LocalDate.now())
+					.fluxoAdmissao("Padrão")
+					.numeroCTPS("1234")
+					.numeroPIS("1234")
+					.regime("Normal")
+					.salario("7500")
+					.build())
 			.build();
 		Colaborador colaborador = cadastrarColaboradorFisico.execute(cadastrarCommand);
 		id = colaborador.getId();
@@ -100,12 +111,23 @@ class AtualizarColaboradorFisicoTest {
 					.numero(123)
 					.endereco("Rua dos coelhos")
 					.build())
+			.dadosContratuaisFisico(DadosContratuaisFisico.builder()
+					.serieCTPS("1234")
+					.cargo("Desenvolvedor")
+					.dataAdmissao(LocalDate.now())
+					.fluxoAdmissao("Padrão")
+					.numeroCTPS("1234")
+					.numeroPIS("1234")
+					.regime("Normal")
+					.salario("8000")
+					.build())
 			.build();
 		atualizarColaboradorFisico.execute(id, command);
 		var colaborador = colaboradorFisicoRepository.findById(id).orElseThrow();
 		assertEquals("Fulano da Silva", colaborador.getNome());
 		assertEquals(email, colaborador.getEmail());
 		assertEquals("111111112", colaborador.getEndereco().getCep());
+		assertEquals("8000", colaborador.getDadosContratuaisFisico().getSalario());
 	}
 
 	@Test
